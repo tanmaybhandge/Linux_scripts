@@ -15,7 +15,7 @@ sudo systemctl status httpd | grep Active
 
 # firewall installation, start and status check
 
-sudo yum install firewalld
+sudo yum -y install firewalld
 sudo systemctl start firewalld
 sudo systemctl status firewalld | grep Active
 
