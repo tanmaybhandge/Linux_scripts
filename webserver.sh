@@ -27,7 +27,7 @@ sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
 
 # acquiring the ip address for access to the web server
-echo "this is the public IP address:" `curl -4 icanhazip.com`
+# echo "this is the public IP address:" `curl -4 icanhazip.com`
 
 # adding the needed permissions for creating and editing the index.html file
 sudo chown -R $USER:$USER /var/www
