@@ -4,7 +4,7 @@
 INIT_ID="root"
 INIT_PASSWORD="ODFiOTBhOG"
 dbhost="10.38.78.56"
-$MYIP="10.38.78.51"
+MYIP="10.38.78.51"
 
 curl -s --data "dbname=wordpress&uname=$INIT_ID&pwd=$INIT_PASSWORD&dbhost=$dbhost&prefix=wp_&submit=Submit" \
 http://$MYIP/wp-admin/setup-config.php?step=2
