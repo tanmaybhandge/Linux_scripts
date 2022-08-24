@@ -1,6 +1,18 @@
 #!/bin/bash
 
-# DB, Wordpress 초기비번 정의 /root/INIT_PASSWORD
+sudo yum install -y wget
+
+mkdir -p /var/www/
+pushd /var/www/
+wget https://wordpress.org/latest.tar.gz
+tar -xzf latest.tar.gz
+rm -f latest.tar.gz
+chown -R apache:apache wordpress
+mv html{,_old}
+mv wordpress html
+popd
+
+# DB, Wordpress
 INIT_ID="root"
 INIT_PASSWORD="NzA1YjY0OT"
 dbhost="10.38.78.57"
