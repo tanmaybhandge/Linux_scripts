@@ -1,5 +1,6 @@
 #!/bin/bash
 
+/*
 sudo yum install -y wget
 
 mkdir -p /var/www/
@@ -11,6 +12,8 @@ chown -R apache:apache wordpress
 mv html{,_old}
 mv wordpress html
 popd
+
+*/
 
 # DB, Wordpress
 INIT_ID="root"
