@@ -30,11 +30,12 @@ echo "user=root">>/root/.my.cnf
 echo "password="$mysqlrootpass>>/root/.my.cnf
 
 
-
 ##### Set WP Salts
 /usr/bin/mysql -u root -e "CREATE DATABASE $db_name"
 /usr/bin/mysql -u root -e "CREATE USER '$db_name'@'localhost' IDENTIFIED WITH mysql_native_password BY '$db_password';"
 /usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'localhost';"
+
+/usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;"
 
 ######Display generated passwords to log file.
 echo "Database Name: " $db_name
@@ -42,17 +43,9 @@ echo "Database User: " $db_user
 echo "Database Password: " $db_password
 echo "Mysql root password: " $mysqlrootpass
 
-/usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';"
-/usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';"
-
-#### Adding new user to DB with all permissions
-/usr/bin/mysql -u root -e "CREATE USER 'tanmay'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mypass';"
-/usr/bin/mysql -u root -e "CREATE USER 'tanmay'@'%' IDENTIFIED WITH mysql_native_password BY 'mypass';"
-
-/usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'tanmay'@'localhost';"
-/usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'tanmay'@'%';"
-
 
 #### Remote access for DB ####
 
 sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
+
+sudo service mysql restart
