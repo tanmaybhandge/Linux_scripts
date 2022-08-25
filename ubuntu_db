@@ -1,5 +1,7 @@
 #/bin/sh
 
+apt install curl
+
 #Creating Random WP Database Credenitals
 db_name="wp`date +%s`"
 db_user=$db_name
